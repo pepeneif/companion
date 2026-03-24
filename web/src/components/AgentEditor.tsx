@@ -18,7 +18,7 @@ export interface AgentFormData {
   name: string;
   description: string;
   icon: string;
-  backendType: "claude" | "codex";
+  backendType: "claude" | "codex" | "openrouter";
   model: string;
   permissionMode: string;
   cwd: string;
@@ -171,7 +171,7 @@ export function AgentEditor({
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handleBackendChange(backend: "claude" | "codex") {
+  function handleBackendChange(backend: "claude" | "codex" | "openrouter") {
     setForm((prev) => ({
       ...prev,
       backendType: backend,

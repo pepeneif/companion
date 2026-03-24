@@ -79,7 +79,7 @@ interface JobFormData {
   recurring: boolean;
   schedule: string;
   oneTimeDate: string;
-  backendType: "claude" | "codex";
+  backendType: "claude" | "codex" | "openrouter";
   model: string;
   cwd: string;
 }

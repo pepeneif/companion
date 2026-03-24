@@ -236,7 +236,7 @@ export class SessionOrchestrator {
           : undefined;
       const forkSession = body.forkSession === true;
       const backend = (body.backend ?? "claude") as BackendType;
-      if (backend !== "claude" && backend !== "codex") {
+      if (backend !== "claude" && backend !== "codex" && backend !== "openrouter") {
         return { ok: false, error: `Invalid backend: ${String(body.backend)}`, status: 400 };
       }
 

@@ -53,6 +53,32 @@ export const CODEX_MODELS: ModelOption[] = [
   { value: "gpt-5.1-codex-mini", label: "GPT-5.1 Mini", icon: "\u26A1" },
 ];
 
+export const OPENROUTER_MODELS: ModelOption[] = [
+  // Claude via OpenRouter
+  { value: "openrouter/anthropic/claude-3.5-sonnet", label: "Claude 3.5 Sonnet", icon: "\u25CB" },
+  { value: "openrouter/anthropic/claude-3.5-haiku", label: "Claude 3.5 Haiku", icon: "\u25CB" },
+  // Google Gemini
+  { value: "openrouter/google/gemini-2.5-pro", label: "Gemini 2.5 Pro", icon: "\u25CB" },
+  { value: "openrouter/google/gemini-2.0-flash", label: "Gemini 2.0 Flash", icon: "\u25CB" },
+  { value: "openrouter/google/gemini-3.1-pro-preview", label: "Gemini 3.1 Pro (Preview)", icon: "\u25CB" },
+  // DeepSeek
+  { value: "openrouter/deepseek/deepseek-chat-v3", label: "DeepSeek V3", icon: "\u25CB" },
+  { value: "openrouter/deepseek/deepseek-r1", label: "DeepSeek R1", icon: "\u25CB" },
+  // Meta Llama
+  { value: "openrouter/meta-llama/llama-3.3-70b-instruct", label: "Llama 3.3 70B", icon: "\u25CB" },
+  // Mistral
+  { value: "openrouter/mistralai/mistral-large", label: "Mistral Large", icon: "\u25CB" },
+  // xAI Grok
+  { value: "openrouter/x-ai/grok-2", label: "Grok 2", icon: "\u25CB" },
+  // MiniMax
+  { value: "openrouter/minimax/minimax-m2.7", label: "MiniMax M2.7", icon: "\u25CB" },
+  { value: "openrouter/minimax/minimax-m2.5", label: "MiniMax M2.5", icon: "\u25CB" },
+  { value: "openrouter/minimax/minimax-m2.5:free", label: "MiniMax M2.5 (Free)", icon: "\u2600" },
+  // NVIDIA Nemotron
+  { value: "openrouter/nvidia/nemotron-3-super-120b-a12b:free", label: "Nemotron 3 Super 120B (Free)", icon: "\u2600" },
+  { value: "openrouter/nvidia/nemotron-3-nano-30b-a3b:free", label: "Nemotron 3 Nano 30B (Free)", icon: "\u2600" },
+];
+
 export const CLAUDE_MODES: ModeOption[] = [
   { value: "bypassPermissions", label: "Agent" },
   { value: "plan", label: "Plan" },
@@ -79,7 +105,9 @@ export const CODEX_AGENT_MODES: ModeOption[] = [
 // ─── Getters ─────────────────────────────────────────────────────────────────
 
 export function getModelsForBackend(backend: BackendType): ModelOption[] {
-  return backend === "codex" ? CODEX_MODELS : CLAUDE_MODELS;
+  if (backend === "codex") return CODEX_MODELS;
+  if (backend === "openrouter") return OPENROUTER_MODELS;
+  return CLAUDE_MODELS;
 }
 
 export function getModesForBackend(backend: BackendType): ModeOption[] {
@@ -87,7 +115,8 @@ export function getModesForBackend(backend: BackendType): ModeOption[] {
 }
 
 export function getAgentModesForBackend(backend: BackendType): ModeOption[] {
-  return backend === "codex" ? CODEX_AGENT_MODES : CLAUDE_AGENT_MODES;
+  if (backend === "codex") return CODEX_AGENT_MODES;
+  return CLAUDE_AGENT_MODES;
 }
 
 export function getDefaultModel(backend: BackendType): string {

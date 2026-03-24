@@ -3294,7 +3294,7 @@ function PlaygroundSubagentGroup({
 }: {
   description: string;
   agentType: string;
-  backend?: "claude" | "codex";
+  backend?: "claude" | "codex" | "openrouter";
   status?: string;
   senderThreadId?: string;
   receiverThreadIds?: string[];

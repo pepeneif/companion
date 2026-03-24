@@ -81,7 +81,7 @@ export async function executeSessionCreation(
       : undefined;
   const forkSession = body.forkSession === true;
   const backend = (body.backend as string) ?? "claude";
-  if (backend !== "claude" && backend !== "codex") {
+  if (backend !== "claude" && backend !== "codex" && backend !== "openrouter") {
     throw new SessionCreationError(`Invalid backend: ${String(backend)}`, 400);
   }
 
@@ -115,6 +115,15 @@ export async function executeSessionCreation(
       envVars = { ...envVars, LINEAR_API_KEY: conn.apiKey };
       linearSystemPrompt = buildLinearSystemPrompt(conn, body.linearIssue as Parameters<typeof buildLinearSystemPrompt>[1]);
     }
+  }
+
+  // Inject OpenRouter configuration if using openrouter backend
+  if (backend === "openrouter") {
+    envVars = {
+      ...envVars,
+      ANTHROPIC_BASE_URL: "https://openrouter.ai/api/v1",
+    };
+    console.log("[session-creation] OpenRouter mode: using ANTHROPIC_BASE_URL=https://openrouter.ai/api/v1");
   }
 
   // Resolve Docker image early

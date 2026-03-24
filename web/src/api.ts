@@ -221,7 +221,7 @@ export interface CreateSessionOpts {
   branch?: string;
   createBranch?: boolean;
   useWorktree?: boolean;
-  backend?: "claude" | "codex";
+  backend?: "claude" | "codex" | "openrouter";
   sandboxEnabled?: boolean;
   sandboxSlug?: string;
   container?: ContainerCreateOpts;
@@ -570,7 +570,7 @@ export interface CronJobInfo {
   prompt: string;
   schedule: string;
   recurring: boolean;
-  backendType: "claude" | "codex";
+  backendType: "claude" | "codex" | "openrouter";
   model: string;
   cwd: string;
   envSlug?: string;
@@ -610,7 +610,7 @@ export interface AgentInfo {
   name: string;
   description: string;
   icon?: string;
-  backendType: "claude" | "codex";
+  backendType: "claude" | "codex" | "openrouter";
   model: string;
   permissionMode: string;
   cwd: string;
@@ -734,7 +734,7 @@ export interface CreateSessionStreamResult {
   sessionId: string;
   state: string;
   cwd: string;
-  backendType?: "claude" | "codex";
+  backendType?: "claude" | "codex" | "openrouter";
   resumeSessionAt?: string;
   forkSession?: boolean;
 }

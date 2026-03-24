@@ -48,7 +48,7 @@ interface SubagentGroup {
   taskToolUseId: string;
   description: string;
   agentType: string;
-  backend?: "claude" | "codex";
+  backend?: "claude" | "codex" | "openrouter";
   status?: string;
   receiverCount?: number;
   senderThreadId?: string;
@@ -152,7 +152,7 @@ function buildEntries(
     {
       description: string;
       agentType: string;
-      backend?: "claude" | "codex";
+      backend?: "claude" | "codex" | "openrouter";
       status?: string;
       receiverCount?: number;
       senderThreadId?: string;
@@ -203,7 +203,7 @@ function groupMessages(messages: ChatMessage[]): FeedEntry[] {
     {
       description: string;
       agentType: string;
-      backend?: "claude" | "codex";
+      backend?: "claude" | "codex" | "openrouter";
       status?: string;
       receiverCount?: number;
       senderThreadId?: string;

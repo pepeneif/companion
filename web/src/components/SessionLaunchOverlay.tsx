@@ -3,7 +3,7 @@ import type { CreationProgressEvent } from "../api.js";
 interface Props {
   steps: CreationProgressEvent[];
   error?: string | null;
-  backend?: "claude" | "codex";
+  backend?: "claude" | "codex" | "openrouter";
   onCancel?: () => void;
 }
 

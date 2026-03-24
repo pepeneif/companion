@@ -39,7 +39,7 @@ export function LinearAgentEditor({
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handleBackendChange(backend: "claude" | "codex") {
+  function handleBackendChange(backend: "claude" | "codex" | "openrouter") {
     setForm((prev) => ({
       ...prev,
       backendType: backend,
