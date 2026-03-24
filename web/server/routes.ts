@@ -1177,6 +1177,7 @@ export function createRoutes(
 
     backends.push({ id: "claude", name: "Claude Code", available: resolveBinary("claude") !== null });
     backends.push({ id: "codex", name: "Codex", available: resolveBinary("codex") !== null });
+    backends.push({ id: "openrouter", name: "OpenRouter", available: true });
 
     return c.json(backends);
   });
